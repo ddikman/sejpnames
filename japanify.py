@@ -33,10 +33,9 @@ def get_names(filename: str, gender: str):
             name = row['name']
             name_simplified = simplify_swedish_name(row['name'])
             count = normalize_int(row['count'])
-            link = row['link']
             katakana = jaconv.hira2kata(jaconv.alphabet2kana(name_simplified))
             if is_simple_katakana(katakana):
-                yield { 'name': name, 'katakana': katakana, 'link': link, 'count': count, 'gender': gender }
+                yield { 'name': name, 'katakana': katakana, 'count': count, 'gender': gender }
 
 all_names = list(get_names('flicknamn.csv', 'girl')) + list(get_names('pojknamn.csv', 'boy'))
 
